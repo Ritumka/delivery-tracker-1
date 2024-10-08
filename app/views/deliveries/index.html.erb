@@ -62,10 +62,18 @@
         <div><%= a_delivery.description %></div>
         <div>Supposed to arrive on <%= a_delivery.arrived_on %></div>
         <div><%= a_delivery.details %></div>
+
         <div>
           <form action="/modify_delivery/<%= a_delivery.id %>" method="post">
-          <input type="hidden" name="arrived" value="true">
-            
+
+        <input type="hidden" id="description_box" name="query_description" value="<%= a_delivery.description %>">
+
+        <input type="hidden" id="arrived_on_box" name="query_arrived_on" value="<%= a_delivery.arrived_on %>">
+    
+        <input type="hidden" id="details_box" name="query_details" value="<%= a_delivery.details %>">
+      
+        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= current_user.id %>">
+
             <button>Mark as received</button>
           </form>
         </div>
