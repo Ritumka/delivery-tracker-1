@@ -30,7 +30,7 @@
         Arrived on
       </dt>
       <dd>
-        <%= @the_delivery.arrived_on %>
+        <%= @the_delivery.supposed_to_arrive_on %>
       </dd>
 
       <dt>
@@ -83,11 +83,11 @@
       </div>
 
       <div>
-        <label for="arrived_on_box">
+        <label for="supposed_to_arrive_on_box">
           Arrived on
         </label>
 
-        <input type="date" id="arrived_on_box" name="query_arrived_on" value="<%= @the_delivery.arrived_on %>">
+        <input type="date" id="supposed_to_arrive_on_box" name="query_supposed_to_arrive_on" value="<%= @the_delivery.supposed_to_arrive_on %>">
       </div>
 
       <div>

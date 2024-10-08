@@ -26,11 +26,11 @@
       </div>
 
       <div>
-        <label for="arrived_on_box">
+        <label for="supposed_to_arrive_on_box">
           Supposed to arrive on
         </label>
 
-        <input type="date" id="arrived_on_box" name="query_arrived_on">
+        <input type="date" id="supposed_to_arrive_on_box" name="query_supposed_to_arrive_on">
       </div>
 
       <div>
@@ -43,6 +43,10 @@
 
       <div>
         <input type="hidden" id="user_id_box" name="query_user_id" value="<%= current_user.id %>">
+      </div>
+
+      <div>
+        <input type="hidden" id="arrived_box" name="query_arrived">
       </div>
 
       <button>
@@ -58,27 +62,28 @@
   <h2>Waiting on</h2>
   <ul>
     <% @list_of_deliveries.each do |a_delivery| %>
-      <li>
-        <div><%= a_delivery.description %></div>
-        <div>Supposed to arrive on <%= a_delivery.arrived_on %></div>
-        <div><%= a_delivery.details %></div>
 
-        <div>
-          <form action="/modify_delivery/<%= a_delivery.id %>" method="post">
+        <li>
+          <div><%= a_delivery.description %></div>
+          <div>Supposed to arrive on <%= a_delivery.supposed_to_arrive_on %></div>
+          <div><%= a_delivery.details %></div>
 
-        <input type="hidden" id="description_box" name="query_description" value="<%= a_delivery.description %>">
+          <div>
+            <form action="/modify_delivery/<%= a_delivery.id %>" method="post">
 
-        <input type="hidden" id="arrived_on_box" name="query_arrived_on" value="<%= a_delivery.arrived_on %>">
-    
-        <input type="hidden" id="details_box" name="query_details" value="<%= a_delivery.details %>">
-      
-        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= current_user.id %>">
+              <input type="hidden" id="description_box" name="query_description" value="<%= a_delivery.description %>">
+              <input type="hidden" id="supposed_to_arrive_on_box" name="query_supposed_to_arrive_on" value="<%= a_delivery.supposed_to_arrive_on %>">
+              <input type="hidden" id="details_box" name="query_details" value="<%= a_delivery.details %>">
+              <input type="hidden" id="user_id_box" name="query_user_id" value="<%= current_user.id %>">
 
-            <button>Mark as received</button>
-          </form>
-        </div>
-      </li>
-      <br>
+              <button>Mark as received</button>
+            </form>
+          </div>
+        </li>
+
+        <br>
+
+
     <% end %>
   </ul>
 </div>
@@ -88,7 +93,13 @@
 <div class="received" style="background-color: lightgreen">
   <h2>Received</h2>
   <ul>
-    <li>
-    </li>
+    <% @list_of_deliveries.each do |a_delivery| %>
+    <%# if a_delivery.arrived.false? %>
+      <li>
+        <div><%= a_delivery.description %></div>
+        <div><a href="/delete_delivery/<%= a_delivery.id %>">Delete</a></div>
+      </li>
+      <%# end %>
+    <% end %>
   </ul>
 </div>
