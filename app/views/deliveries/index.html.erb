@@ -54,7 +54,7 @@
 
 <hr>
 
-<div>
+<div class="waiting_on" style="background-color: lightgoldenrodyellow">
   <h2>Waiting on</h2>
   <ul>
     <% @list_of_deliveries.each do |a_delivery| %>
@@ -71,8 +71,16 @@
         </div>
       </li>
       <br>
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
 </div>
 
 <hr>
+
+<div class="received" style="background-color: lightgreen">
+  <h2>Received</h2>
+  <ul>
+    <li>
+    </li>
+  </ul>
+</div>
