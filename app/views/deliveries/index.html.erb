@@ -45,10 +45,6 @@
         <input type="hidden" id="user_id_box" name="query_user_id" value="<%= current_user.id %>">
       </div>
 
-      <div>
-        <input type="hidden" id="arrived_box" name="query_arrived">
-      </div>
-
       <button>
         Log delivery
       </button>
@@ -62,6 +58,7 @@
   <h2>Waiting on</h2>
   <ul>
     <% @list_of_deliveries.each do |a_delivery| %>
+      <% if a_delivery.arrived == false %>
 
         <li>
           <div><%= a_delivery.description %></div>
@@ -83,7 +80,7 @@
 
         <br>
 
-
+      <% end %>
     <% end %>
   </ul>
 </div>
@@ -94,12 +91,12 @@
   <h2>Received</h2>
   <ul>
     <% @list_of_deliveries.each do |a_delivery| %>
-    <%# if a_delivery.arrived.false? %>
-      <li>
-        <div><%= a_delivery.description %></div>
-        <div><a href="/delete_delivery/<%= a_delivery.id %>">Delete</a></div>
-      </li>
-      <%# end %>
+      <% if a_delivery.arrived == true %>
+        <li>
+          <div><%= a_delivery.description %></div>
+          <div><a href="/delete_delivery/<%= a_delivery.id %>">Delete</a></div>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
