@@ -12,4 +12,7 @@
 #  user_id               :integer
 #
 class Delivery < ApplicationRecord
+  def updated
+    Time.now - self.updated_at
+  end
 end

@@ -94,6 +94,7 @@
       <% if a_delivery.arrived == true %>
         <li>
           <div><%= a_delivery.description %></div>
+          <div>Updated <%= a_delivery.updated_at %></div>
           <div><a href="/delete_delivery/<%= a_delivery.id %>">Delete</a></div>
         </li>
       <% end %>
